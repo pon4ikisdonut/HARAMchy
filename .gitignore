@@ -15,6 +15,9 @@
 # LFS build directory
 /home/
 
+# Sensitive files
+AGENTS.md
+
 # OS
 .DS_Store
 Thumbs.db
