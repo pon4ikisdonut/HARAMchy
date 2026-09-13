@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: GPL-2.0
+config HARAM_GUARD
+	tristate "HARAMchy haram_guard security module"
+	depends on SECURITY
+	depends on NET
+	depends on PROC_FS
+	help
+	  This module detects forbidden ("haram") content on the system and
+	  triggers a kernel panic countdown. It provides procfs interfaces,
+	  a character device, and a netlink socket for communication with the
+	  userspace haramd daemon.
+
+	  If you are unsure, say N.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called haram_guard.
+
+config HARAM_GUARD_DEFAULT_ENABLE
+	bool "Enable haram_guard by default"
+	depends on HARAM_GUARD
+	default y
+	help
+	  If enabled, the module starts in active enforcement mode.
+	  If disabled, it must be enabled at runtime via module parameter
+	  or /dev/haram ioctl.
+
+config HARAM_GUARD_PANIC_TIMEOUT
+	int "Seconds before panic after violation"
+	depends on HARAM_GUARD
+	default 10
+	range 5 60
+	help
+	  Number of seconds to wait after a haram violation is detected
+	  before triggering kernel panic. Users can write "MERCY" or
+	  "СМИЛОСТИВЬСЯ" to /proc/haram/abort within this window.
+
+config HARAM_GUARD_NETLINK_PID
+	int "Netlink group for haramd daemon"
+	depends on HARAM_GUARD
+	default 1
+	help
+	  Multicast netlink group number for communicating with the
+	  userspace haramd daemon. Must match the daemon configuration.

@@ -1,0 +1,11 @@
+NAME="HARAMchy"
+VERSION="1.0"
+ID=haramchy
+ID_LIKE=gentoo
+PRETTY_NAME="HARAMchy 1.0 (Halal Linux)"
+HOME_URL="https://github.com/pon4ikisdonut/HARAMchy"
+BUG_REPORT_URL="https://github.com/pon4ikisdonut/HARAMchy/issues"
+SUPPORT_URL="https://github.com/pon4ikisdonut/HARAMchy/issues"
+BUILD_ID="1.0"
+VARIANT="HARAMchy"
+VARIANT_ID=haramchy

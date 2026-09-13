@@ -1,0 +1,38 @@
+# ============================================
+# HARAMchy - Environment Variables
+# ============================================
+
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
+export GDK_BACKEND=wayland
+export GDK_RENDERING=gl
+
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_USE_XINPUT2=1
+
+export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export JAVA_HOME=/usr/lib/jvm/default
+export EDITOR=nano
+export VISUAL=nano
+export BROWSER=firefox
+export TERMINAL=alacritty
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CACHE_HOME=$HOME/.cache
+
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export GPG_TTY=$(tty)

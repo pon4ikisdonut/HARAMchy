@@ -1,0 +1,60 @@
+# Microsoft Domains Blocklist
+# Blocks all Microsoft-owned domains via iptables string match
+# Used by haramd DPI engine
+
+# Primary domains
+microsoft.com
+windows.com
+windows.net
+windowsupdate.com
+live.com
+outlook.com
+office.com
+office365.com
+azure.com
+msn.com
+skype.com
+linkedin.com
+github.com
+visualstudio.com
+xbox.com
+bing.com
+
+# CDN/Edge
+msedge.net
+akamaized.net
+akamai.net
+
+# Cloud/Enterprise
+microsoftonline.com
+sharepoint.com
+onedrive.com
+teams.microsoft.com
+copilot.microsoft.com
+katana.microsoft.com
+entra.microsoft.com
+login.microsoftonline.com
+graph.microsoft.com
+aadcdn.microsoftonline.com
+
+# Dev/Tools
+dev.azure.com
+visualstudio.com
+vscode.dev
+nuget.org
+msdn.microsoft.com
+docs.microsoft.com
+learn.microsoft.com
+support.microsoft.com
+
+# Misc
+microsoftedge.com
+windowsinsider.com
+windows.com
+surface.com
+xboxlive.com
+office.com
+powerbi.com
+dynamics.com
+finance.dynamics.com
+crm.dynamics.com

@@ -1,0 +1,31 @@
+# HARAMd Configuration v3.0
+
+[general]
+daemonize = true
+verbose = 3
+dry_run = false
+rules_file = "/etc/haram-rules/rules.yaml"
+
+[keyboard]
+enabled = true
+keyboard_device = "/dev/input/event0"
+
+[screen]
+enabled = true
+framebuffer_device = "/dev/fb0"
+
+[usb]
+enabled = true
+
+[dpi]
+enabled = true
+
+[panic]
+panic_on_critical = true
+alarm_before_panic = true
+alarm_sec = 3
+
+[blocklist]
+enabled = true
+microsoft_domains = "/etc/haram-rules/blocklists/microsoft_domains.txt"
+microsoft_ips = "/etc/haram-rules/blocklists/microsoft_ips.txt"

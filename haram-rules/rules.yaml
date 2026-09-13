@@ -1,0 +1,815 @@
+# HARAMd Rules Database (v2.0 - Full Quran Rules + Windows Detection)
+# /etc/haram-rules/rules.yaml
+
+rules:
+
+  # ============================================================
+  # Category: microsoft - Windows/Microsoft Detection (CRITICAL)
+  # Quran Reference: Al-Baqarah 2:120, Al-Ma'idah 5:51
+  # ============================================================
+
+  - id: 66601
+    name: "windows_en"
+    category: "microsoft"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Windows OS detection in English"
+    quran_reference: "Al-Baqarah 2:120, Al-Ma'idah 5:51"
+    patterns:
+      - pattern: "windows"
+        weight: 100
+      - pattern: "microsoft"
+        weight: 100
+      - pattern: "windows.?10"
+        weight: 100
+      - pattern: "windows.?11"
+        weight: 100
+      - pattern: "windows.?server"
+        weight: 100
+
+  - id: 66602
+    name: "windows_ru"
+    category: "microsoft"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Windows OS detection in Russian"
+    quran_reference: "Al-Baqarah 2:120"
+    patterns:
+      - pattern: "виндовс"
+        weight: 100
+      - pattern: "винда"
+        weight: 100
+      - pattern: "виндовc"
+        weight: 100
+
+  - id: 66603
+    name: "windows_usb_write"
+    category: "microsoft"
+    severity: "critical"
+    detection_type: "usb_monitor"
+    enforcement: "strict"
+    enabled: true
+    description: "Detect Windows ISO writing to USB"
+    quran_reference: "Al-Baqarah 2:120"
+    patterns:
+      - pattern: "windows.*iso"
+        weight: 100
+      - pattern: "win.*usb"
+        weight: 95
+
+  - id: 66604
+    name: "windows_download"
+    category: "microsoft"
+    severity: "critical"
+    detection_type: "download_monitor"
+    enforcement: "strict"
+    enabled: true
+    description: "Detect Windows ISO downloads"
+    quran_reference: "Al-Baqarah 2:120"
+    patterns:
+      - pattern: "windows.*\\.iso"
+        weight: 100
+      - pattern: "microsoft.*download"
+        weight: 90
+      - pattern: "media.*creation.*tool"
+        weight: 95
+
+  - id: 66605
+    name: "windows_screen"
+    category: "microsoft"
+    severity: "critical"
+    detection_type: "screen_scan"
+    enforcement: "strict"
+    enabled: true
+    description: "Detect Windows text on screen"
+    quran_reference: "Al-Baqarah 2:120"
+    patterns:
+      - pattern: "windows"
+        weight: 100
+      - pattern: "microsoft"
+        weight: 100
+
+  - id: 66606
+    name: "windows_keyboard"
+    category: "microsoft"
+    severity: "critical"
+    detection_type: "keyboard_monitor"
+    enforcement: "strict"
+    enabled: true
+    description: "Detect Windows keywords typed on keyboard"
+    quran_reference: "Al-Baqarah 2:120"
+    patterns:
+      - pattern: "windows"
+        weight: 100
+      - pattern: "виндовс"
+        weight: 100
+      - pattern: "винда"
+        weight: 100
+      - pattern: "microsoft"
+        weight: 100
+
+  # ============================================================
+  # Category: food_drinks - Pig/Pork/Swine (Quran)
+  # Al-Baqarah 2:173, Al-Ma'idah 5:3
+  # ============================================================
+
+  - id: 1001
+    name: "pork_swine_en"
+    category: "food_drinks"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of pork, pig, and swine-related terms in English"
+    quran_reference: "Al-Baqarah 2:173, Al-Ma'idah 5:3"
+    patterns:
+      - pattern: "pork"
+        weight: 100
+      - pattern: "pig"
+        weight: 100
+      - pattern: "swine"
+        weight: 100
+      - pattern: "ham[^a-z]"
+        weight: 95
+      - pattern: "bacon"
+        weight: 100
+      - pattern: "lard"
+        weight: 90
+      - pattern: "suidae"
+        weight: 80
+
+  - id: 1002
+    name: "pork_swine_ru"
+    category: "food_drinks"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of pork/pig terms in Russian"
+    quran_reference: "Al-Baqarah 2:173, Al-Ma'idah 5:3"
+    patterns:
+      - pattern: "свинин"
+        weight: 100
+      - pattern: "свинь"
+        weight: 100
+      - pattern: "свино"
+        weight: 100
+      - pattern: "хамон"
+        weight: 95
+      - pattern: "бекон"
+        weight: 100
+      - pattern: "шпик"
+        weight: 90
+      - pattern: "сало"
+        weight: 85
+
+  - id: 1003
+    name: "pork_swine_ar"
+    category: "food_drinks"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of pork/pig terms in Arabic transliteration"
+    quran_reference: "Al-Baqarah 2:173"
+    patterns:
+      - pattern: "lahm.*khirsw"
+        weight: 100
+      - pattern: "khinzir"
+        weight: 100
+      - pattern: "khanazir"
+        weight: 100
+
+  - id: 1010
+    name: "haram_food_general"
+    category: "food_drinks"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "General haram food items (blood, carrion, etc.)"
+    quran_reference: "Al-Ma'idah 5:3"
+    patterns:
+      - pattern: "blood.*sausage"
+        weight: 95
+      - pattern: "black.?pudding"
+        weight: 95
+      - pattern: "carrion"
+        weight: 90
+      - pattern: "roadkill"
+        weight: 85
+
+  - id: 1011
+    name: "haram_food_ru"
+    category: "food_drinks"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "General haram food items in Russian"
+    quran_reference: "Al-Ma'idah 5:3"
+    patterns:
+      - pattern: "кровянк"
+        weight: 95
+      - pattern: "мертвечин"
+        weight: 90
+
+  # ============================================================
+  # Category: gambling_alcohol - Alcohol (Quran)
+  # Al-Ma'idah 5:90-91
+  # ============================================================
+
+  - id: 2001
+    name: "alcohol_en"
+    category: "gambling_alcohol"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of alcohol-related terms in English"
+    quran_reference: "Al-Ma'idah 5:90-91"
+    patterns:
+      - pattern: "alcohol"
+        weight: 100
+      - pattern: "vodka"
+        weight: 100
+      - pattern: "wine"
+        weight: 95
+      - pattern: "whiskey"
+        weight: 100
+      - pattern: "beer"
+        weight: 100
+      - pattern: "moonshine"
+        weight: 100
+      - pattern: "brew"
+        weight: 80
+      - pattern: "distill"
+        weight: 75
+      - pattern: "ferment"
+        weight: 70
+
+  - id: 2002
+    name: "alcohol_ru"
+    category: "gambling_alcohol"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of alcohol-related terms in Russian"
+    quran_reference: "Al-Ma'idah 5:90-91"
+    patterns:
+      - pattern: "алкогол"
+        weight: 100
+      - pattern: "водк"
+        weight: 100
+      - pattern: "вино[^в]"
+        weight: 95
+      - pattern: "виски"
+        weight: 100
+      - pattern: "пив[оа]"
+        weight: 100
+      - pattern: "самогон"
+        weight: 100
+      - pattern: "хмель"
+        weight: 80
+      - pattern: "бражк"
+        weight: 90
+      - pattern: "спирт"
+        weight: 85
+
+  - id: 2003
+    name: "alcohol_apps"
+    category: "gambling_alcohol"
+    severity: "high"
+    detection_type: "process_name"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of alcohol delivery/recipe applications"
+    quran_reference: "Al-Ma'idah 5:90"
+    process_names:
+      - "drizly"
+      - "minibar"
+      - "wine-searcher"
+      - "vivino"
+    patterns:
+      - pattern: "alcohol.*delivery"
+        weight: 90
+      - pattern: "wine.*delivery"
+        weight: 90
+
+  # ============================================================
+  # Category: gambling_alcohol - Gambling (Quran)
+  # Al-Ma'idah 5:90-91
+  # ============================================================
+
+  - id: 2010
+    name: "gambling_en"
+    category: "gambling_alcohol"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of gambling-related terms in English"
+    quran_reference: "Al-Ma'idah 5:90-91"
+    patterns:
+      - pattern: "casino"
+        weight: 100
+      - pattern: "poker"
+        weight: 100
+      - pattern: "blackjack"
+        weight: 100
+      - pattern: "roulette"
+        weight: 100
+      - pattern: "slot.?machine"
+        weight: 100
+      - pattern: "gambl"
+        weight: 100
+      - pattern: "jackpot"
+        weight: 95
+      - pattern: "betting"
+        weight: 90
+      - pattern: "sportsbet"
+        weight: 95
+      - pattern: "lottery"
+        weight: 85
+
+  - id: 2011
+    name: "gambling_ru"
+    category: "gambling_alcohol"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of gambling-related terms in Russian"
+    quran_reference: "Al-Ma'idah 5:90-91"
+    patterns:
+      - pattern: "казин[оа]"
+        weight: 100
+      - pattern: "покер"
+        weight: 100
+      - pattern: "блэкджек"
+        weight: 100
+      - pattern: "рулетк"
+        weight: 100
+      - pattern: "автомат"
+        weight: 70
+      - pattern: "игров"
+        weight: 80
+      - pattern: "ставк[аи]"
+        weight: 90
+      - pattern: "букмекер"
+        weight: 95
+      - pattern: "лотере"
+        weight: 85
+
+  - id: 2012
+    name: "gambling_apps"
+    category: "gambling_alcohol"
+    severity: "high"
+    detection_type: "process_name"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of gambling applications"
+    quran_reference: "Al-Ma'idah 5:90"
+    process_names:
+      - "pokerstars"
+      - "888casino"
+      - "bet365"
+      - "draftkings"
+      - "fanduel"
+      - "stake"
+    patterns:
+      - pattern: "online.*casino"
+        weight: 100
+      - pattern: "real.*money.*gambl"
+        weight: 100
+
+  # ============================================================
+  # Category: gambling_alcohol - Drugs (Quran)
+  # Al-Ma'idah 5:90
+  # ============================================================
+
+  - id: 2020
+    name: "drugs_en"
+    category: "gambling_alcohol"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of drug-related content"
+    quran_reference: "Al-Ma'idah 5:90"
+    patterns:
+      - pattern: "drug.*manufactur"
+        weight: 100
+      - pattern: "meth.*cooking"
+        weight: 100
+      - pattern: "cocaine"
+        weight: 100
+      - pattern: "heroin"
+        weight: 100
+      - pattern: "cannabis.*grow"
+        weight: 90
+      - pattern: "marijuana.*farm"
+        weight: 85
+      - pattern: "opioid"
+        weight: 80
+
+  - id: 2021
+    name: "drugs_ru"
+    category: "gambling_alcohol"
+    severity: "critical"
+    detection_type: "keyword"
+    enforcement: "strict"
+    enabled: true
+    description: "Detection of drug-related content in Russian"
+    quran_reference: "Al-Ma'idah 5:90"
+    patterns:
+      - pattern: "наркотик"
+        weight: 100
+      - pattern: "кокаин"
+        weight: 100
+      - pattern: "героин"
+        weight: 100
+      - pattern: "гашиш"
+        weight: 95
+      - pattern: "амфетамин"
+        weight: 95
+      - pattern: "метамфетамин"
+        weight: 100
+
+  # ============================================================
+  # Category: violence - Violence and weapons (Quran)
+  # Al-Hujurat 49:9, Al-Ma'idah 5:32
+  # ============================================================
+
+  - id: 3001
+    name: "violence_weapons"
+    category: "violence"
+    severity: "high"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of weapon and violence-related content"
+    quran_reference: "Al-Hujurat 49:9, Al-Ma'idah 5:32"
+    patterns:
+      - pattern: "bomb.?mak"
+        weight: 100
+      - pattern: "explosive.?recipe"
+        weight: 100
+      - pattern: "assassin"
+        weight: 90
+      - pattern: "terrorist"
+        weight: 95
+      - pattern: "weapon.*build"
+        weight: 85
+      - pattern: "gun.?mak"
+        weight: 90
+
+  # ============================================================
+  # Category: immorality - Adult/immoral content (Quran)
+  # Al-Isra 17:32, An-Nur 24:2
+  # ============================================================
+
+  - id: 4001
+    name: "immoral_content"
+    category: "immorality"
+    severity: "high"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of adult and immoral content"
+    quran_reference: "Al-Isra 17:32, An-Nur 24:2"
+    patterns:
+      - pattern: "porn"
+        weight: 100
+      - pattern: "xxx"
+        weight: 95
+      - pattern: "nude"
+        weight: 85
+      - pattern: "escort"
+        weight: 80
+      - pattern: "onlyfans"
+        weight: 90
+      - pattern: "adult.*content"
+        weight: 85
+      - pattern: "nsfw"
+        weight: 90
+
+  - id: 4002
+    name: "dating_apps"
+    category: "immorality"
+    severity: "medium"
+    detection_type: "process_name"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of haram dating applications"
+    quran_reference: "An-Nur 24:30-31"
+    process_names:
+      - "tinder"
+      - "bumble"
+      - "grindr"
+      - "hinge"
+      - "meetme"
+    patterns:
+      - pattern: "hookup"
+        weight: 90
+      - pattern: "dating.*app"
+        weight: 80
+
+  # ============================================================
+  # Category: lies - Deception and lying (Quran)
+  # Al-Baqarah 2:42, An-Nisa 4:50
+  # ============================================================
+
+  - id: 5001
+    name: "deception_tools"
+    category: "lies"
+    severity: "medium"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of tools used for deception"
+    quran_reference: "Al-Baqarah 2:42, An-Nisa 4:50"
+    patterns:
+      - pattern: "deep.?fake"
+        weight: 100
+      - pattern: "voice.?clon"
+        weight: 90
+      - pattern: "face.?swap"
+        weight: 90
+      - pattern: "forgery"
+        weight: 85
+      - pattern: "counterfeit"
+        weight: 90
+      - pattern: "spoof"
+        weight: 80
+
+  - id: 5010
+    name: "crypto_scams"
+    category: "lies"
+    severity: "high"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of cryptocurrency scams"
+    quran_reference: "Al-Baqarah 2:275, An-Nisa 4:29"
+    patterns:
+      - pattern: "pump.*dump"
+        weight: 100
+      - pattern: "rug.?pull"
+        weight: 100
+      - pattern: "ponzi"
+        weight: 100
+      - pattern: "pyramid.*scheme"
+        weight: 100
+      - pattern: "get.?rich.?quick"
+        weight: 90
+      - pattern: "guaranteed.*return"
+        weight: 85
+
+  # ============================================================
+  # Category: social_norms - Music and entertainment (Quran)
+  # Luqman 31:6, Al-Isra 17:64
+  # ============================================================
+
+  - id: 6001
+    name: "music_instruments"
+    category: "social_norms"
+    severity: "low"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of musical instruments and entertainment (debatable)"
+    quran_reference: "Luqman 31:6, Al-Isra 17:64"
+    patterns:
+      - pattern: "music.*player"
+        weight: 60
+      - pattern: "spotify"
+        weight: 65
+      - pattern: "soundcloud"
+        weight: 65
+      - pattern: "guitar"
+        weight: 50
+      - pattern: "piano"
+        weight: 50
+
+  # ============================================================
+  # Category: idol_images - Idol and realistic image detection (Quran)
+  # Al-Anbiya 21:52-54, Al-Hajj 22:30
+  # ============================================================
+
+  - id: 7001
+    name: "idol_worship"
+    category: "idol_images"
+    severity: "high"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of idol worship and polytheism content"
+    quran_reference: "Al-Anbiya 21:52-54, Al-Hajj 22:30"
+    patterns:
+      - pattern: "idol"
+        weight: 80
+      - pattern: "statue.*worship"
+        weight: 90
+      - pattern: "polytheism"
+        weight: 95
+      - pattern: "shirk"
+        weight: 100
+      - pattern: "graven.?image"
+        weight: 85
+
+  - id: 7002
+    name: "face_image_detection"
+    category: "idol_images"
+    severity: "medium"
+    detection_type: "filetype_heuristic"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Heuristic detection of realistic face/portrait images"
+    quran_reference: "Al-Anbiya 21:52-54"
+    file_extensions:
+      - ".jpg"
+      - ".jpeg"
+      - ".png"
+      - ".webp"
+    patterns:
+      - pattern: "face.*detect"
+        weight: 70
+      - pattern: "portrait"
+        weight: 65
+
+  # ============================================================
+  # Category: financial - Riba/Usury detection (Quran)
+  # Al-Baqarah 2:275-280, Aal-Imran 3:130
+  # ============================================================
+
+  - id: 8001
+    name: "riba_interest"
+    category: "financial"
+    severity: "high"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of interest/riba-based financial services"
+    quran_reference: "Al-Baqarah 2:275-280, Aal-Imran 3:130"
+    patterns:
+      - pattern: "interest.*rate"
+        weight: 80
+      - pattern: "apr\\s*\\d"
+        weight: 75
+      - pattern: "payday.*loan"
+        weight: 90
+      - pattern: "credit.*card"
+        weight: 60
+      - pattern: "micro.?loan"
+        weight: 85
+      - pattern: "riba"
+        weight: 100
+      - pattern: "usury"
+        weight: 100
+
+  - id: 8002
+    name: "riba_ru"
+    category: "financial"
+    severity: "high"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of interest/riba terms in Russian"
+    quran_reference: "Al-Baqarah 2:275-280"
+    patterns:
+      - pattern: "процент"
+        weight: 80
+      - pattern: "кредит"
+        weight: 70
+      - pattern: "заём"
+        weight: 75
+      - pattern: "ростовщ"
+        weight: 95
+      - pattern: "лихва"
+        weight: 95
+
+  # ============================================================
+  # Category: wide_knowledge - Occult/fortune telling (Quran)
+  # Al-Ma'idah 5:3, Al-Baqarah 2:102
+  # ============================================================
+
+  - id: 9001
+    name: "fortune_telling"
+    category: "wide_knowledge"
+    severity: "high"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of fortune telling, astrology, and occult content"
+    quran_reference: "Al-Ma'idah 5:3, Al-Baqarah 2:102"
+    patterns:
+      - pattern: "horoscope"
+        weight: 95
+      - pattern: "astrolog"
+        weight: 90
+      - pattern: "tarot"
+        weight: 90
+      - pattern: "palm.?read"
+        weight: 85
+      - pattern: "fortune.?tell"
+        weight: 90
+      - pattern: "numerolog"
+        weight: 80
+      - pattern: "clairvoyan"
+        weight: 85
+      - pattern: "necromanc"
+        weight: 100
+      - pattern: "witchcraft"
+        weight: 95
+      - pattern: "magic.?spell"
+        weight: 95
+
+  - id: 9002
+    name: "fortune_ru"
+    category: "wide_knowledge"
+    severity: "high"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of fortune telling/occult terms in Russian"
+    quran_reference: "Al-Ma'idah 5:3"
+    patterns:
+      - pattern: "гороскоп"
+        weight: 95
+      - pattern: "астролог"
+        weight: 90
+      - pattern: "таро"
+        weight: 90
+      - pattern: "гадан"
+        weight: 85
+      - pattern: "хиромант"
+        weight: 85
+      - pattern: "нумеролог"
+        weight: 80
+      - pattern: "колдовств"
+        weight: 95
+      - pattern: "ведьм"
+        weight: 90
+      - pattern: "шаманств"
+        weight: 85
+
+  - id: 9003
+    name: "occult_apps"
+    category: "wide_knowledge"
+    severity: "medium"
+    detection_type: "process_name"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Detection of occult and fortune-telling applications"
+    quran_reference: "Al-Ma'idah 5:3"
+    process_names:
+      - "co-star"
+      - "the-pattern"
+      - "sanctum"
+    patterns:
+      - pattern: "astrology.*app"
+        weight: 85
+      - pattern: "tarot.*read"
+        weight: 90
+
+  # ============================================================
+  # Category: prayer - Namaz/Prayer enforcement (Quran)
+  # Al-Baqarah 2:238, Al-Jumu'ah 62:9
+  # ============================================================
+
+  - id: 10001
+    name: "prayer_time_enforcement"
+    category: "prayer"
+    severity: "medium"
+    detection_type: "syscall_pattern"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Enforce prayer time restrictions"
+    quran_reference: "Al-Baqarah 2:238, Al-Jumu'ah 62:9"
+    patterns:
+      - pattern: "prayer.*time"
+        weight: 80
+
+  # ============================================================
+  # Category: fasting - Ramadan enforcement (Quran)
+  # Al-Baqarah 2:183-187
+  # ============================================================
+
+  - id: 11001
+    name: "ramadan_fasting"
+    category: "fasting"
+    severity: "medium"
+    detection_type: "keyword"
+    enforcement: "heuristic"
+    enabled: true
+    description: "Enforce fasting restrictions during Ramadan"
+    quran_reference: "Al-Baqarah 2:183-187"
+    patterns:
+      - pattern: "fasting.*time"
+        weight: 75

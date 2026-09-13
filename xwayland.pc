@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+bindir=${exec_prefix}/bin
+
+xwayland=${bindir}/Xwayland
+have_xwayland=true
+
+Name: xwayland
+Description: X server for Wayland
+Version: 22.1.1
